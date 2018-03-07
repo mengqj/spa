@@ -3,21 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <link src="index.css">
 </head>
+<style>
+*{
+  margin:0 0;
+  padding:0 0 ;
+}
+.rectangle{
+   margin:50px auto   0 600px;
+}
+#perimeter{
+  background-color:gray;
+  height:25px;
+  width:200px;
+  margin-top:10px;
+
+}
+#area{
+  background-color:gray;
+  height:25px;
+  width:200px;
+  margin-top:10px;
+
+}
+#width{
+  width:200px;
+  height:25px;
+  margin-top:20px;
+
+}
+#height{
+ width:200px;
+  height:25px;
+  margin-top:10px;
+}
+#calc{
+  margin-top:10px;
+  width:70px;
+  height:25px;
+}
+#widthtext{
+  display:none; 
+  margin:0 0;
+  padding: 0 0;
+}
+span{
+  color:red;
+}
+</style>
 <body>
 <div class="rectangle">
-  <label for="">宽度:</label>
-  <input class="width" type="textbox">
-  <br>
+ <label for="">宽度:</label>
+  <input id="width" type="textbox" value=""><span>&nbsp;&nbsp;*</span>
+  
+  <span id="widthtext"></span>
+  <br/>
   <label for="">高度:</label>
-  <input class="height" type="textbox">
-  <br>
-  <input type="button" class="calc" name="计算" value=“计算”>
+  <input id="height" type="textbox" value=""><span>&nbsp;&nbsp;*</span>
+  <br/>
+  <label for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+  <input type="button" id="calc" value="计算" >
+  <br/>
   <label for="">周长:</label>
-  <input class="perimeter" type="textbox">
-  <br>
+  <input id="perimeter" type="textbox" value="">
+  <br/>
   <label for="">面积:</label>
-  <input class="area" type="textbox">
+  <input id="area" type="textbox" value="">
 </div>
 </body>
-</html>
+<script>
+var width=document.getElementById('width');
+var btn=document.getElementById('calc');
+var heigth=document.getElementById("height");
+var area=document.getElementById('area');
+var perimeter=document.getElementById("perimeter");
+var widthtext=document.getElementById("widthtext");
+btn.onclick=function(){
+ //console.log(width.value);
+ //console.log(heigth.value);
+ var a=width.value;
+ var b=heigth.value;
+  area.value=a*b;
+  perimeter.value=a*2+b*2;
+}
+width.onblur=function(){
+  var a=width.value;
+  if(a==0){
+    alert(oo);
+    widthtext.style.display="block";
+    widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度不能为空!";
+  }
+  
+  
+  }
+</script>
+
+</html>     
