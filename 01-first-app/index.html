@@ -18,14 +18,15 @@
   height:25px;
   width:200px;
   margin-top:10px;
-
+  opacity=0.5;
 }
 #area{
+
   background-color:gray;
   height:25px;
   width:200px;
   margin-top:10px;
-
+ opacity=0.5;
 }
 #width{
   width:200px;
@@ -73,12 +74,19 @@ span{
 </div>
 </body>
 <script>
+
 var width=document.getElementById('width');
 var btn=document.getElementById('calc');
 var heigth=document.getElementById("height");
 var area=document.getElementById('area');
 var perimeter=document.getElementById("perimeter");
 var widthtext=document.getElementById("widthtext");
+area.readOnly=true;
+perimeter.readOnly=true;
+width.focus();
+width.onfocus=function(){
+  heigth.disabled="disabled";
+}
 btn.onclick=function(){
  //console.log(width.value);
  //console.log(heigth.value);
@@ -88,10 +96,12 @@ btn.onclick=function(){
   perimeter.value=a*2+b*2;
 }
 width.onblur=function(){
+  heigth.disabled="";
   var a=width.value;
   if(a==0){
     widthtext.style.display="block";
     widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度不能为空!";
+   // heigth.style.margin-top="-20px";
   }
   
   
