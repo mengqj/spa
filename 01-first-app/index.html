@@ -85,7 +85,7 @@ area.readOnly=true;
 perimeter.readOnly=true;
 width.focus();
 width.onfocus=function(){
-  heigth.disabled="disabled";
+  //heigth.disabled="disabled";
 }
 btn.onclick=function(){
  //console.log(width.value);
@@ -96,6 +96,7 @@ btn.onclick=function(){
   perimeter.value=a*2+b*2;
 }
 width.onblur=function(){
+  
   heigth.disabled="";
   var a=width.value;
   if(a==0){
