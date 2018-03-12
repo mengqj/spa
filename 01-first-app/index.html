@@ -59,7 +59,7 @@ span{
   <input id="width" type="textbox" value=""><span>&nbsp;&nbsp;*</span>
   
   <span id="widthtext"></span>
-  <br/>
+  <div></div>
   <label for="">高度:</label>
   <input id="height" type="textbox" value=""><span>&nbsp;&nbsp;*</span>
   <br/>
@@ -94,22 +94,39 @@ btn.onclick=function(){
  var b=heigth.value;
   area.value=a*b;
   perimeter.value=a*2+b*2;
+  var a=area.value.toString();
+  if(a.length>5)
+  {
+    area.value=a.slice(0,8);
+  }
+
 }
 width.onblur=function(){
   
+ 
   heigth.disabled="";
   var a=width.value;
   if(a==0){
+ 
     widthtext.style.display="block";
     widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度不能为空!";
    // heigth.style.margin-top="-20px";
   }
+ else if(typeof a ==string)
+ {
+   widthtext.style.display="block";
+   widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须为数字"
+ }
   
-  
+  else if(a<0){
+   widthtext.style.display='block';
+   widthtext.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须为正'
   }
+}
 /*window.onclick=function(){
   widthtext.style.display=none;
 }*/
+
 </script>
 
 </html>     
