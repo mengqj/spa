@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>进度条</title>
+
+</head>
+<body>
+<label>下载进度:</label>
+<progress max="100" min="0" id="pg" value="0"></progress>
+<br/>
+<br/>
+<button id="btn">开始</button>
+<button id="btn1">暂停</button>
+<button id="btn2">重置</button>
+</body>
+<script>
+  var pg=document.getElementById('pg');
+ var a =setInterval(function(){
+      if(pg.value!=100)
+      {
+      pg.value++;
+      }
+      else{
+       pg.value=0;
+      }
+      },100);
+  var btn2=document.getElementById('btn2');
+  btn2.onclick=function(){
+    pg.value=0;
+  }
+  var btn=document.getElementById('btn');
+  var btn1=document.getElementById('btn1');
+  btn.onclick=function(){
+    if(pg.value!=100)
+    {
+      setInterval(function(){
+          pg.value++;
+          },100);
+    }
+  }
+
+btn1.onclick=function(){
+    clearInterval(a);
+}
+</script>
+</html>

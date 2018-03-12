@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  
+<meta charset="UTF-8">
 
   <title>按钮</title>
   <link href="css/index.css" rel="stylesheet">
-  <script src="js/index.js"></script>
 </head>
 <body>
 <div>
-  <input value="10" id="btn" type="button">
-</div>
+  <form name="agree">
+  <input  id="btn" type="button" name="agreeb" value="同意(10s)">
+</form>
+ </div>
 </body>
+<script>
+  var btn=document.getElementById('btn');
+  var sec=10;
+  btn.disabled=true;
+  for(var i=1;i<=sec;i++)
+{
+  window.setTimeout('update('+i+')',i*1000);
+}
+function update(num)
+{
+  if(num==sec)
+  {
+    btn.value='同意';
+    btn.disabled=false;
+  }
+  else{
+  var time=sec-num;
+  btn.value='同意('+time+'s)';
+  }
+}
+btn.onclick=function()
+{
+  alert('我知道你会同意');
+}
+</script>
 </html>
