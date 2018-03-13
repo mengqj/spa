@@ -16,15 +16,7 @@
 </body>
 <script>
   var pg=document.getElementById('pg');
- var a =setInterval(function(){
-      if(pg.value!=100)
-      {
-      pg.value++;
-      }
-      else{
-       pg.value=0;
-      }
-      },100);
+  var a=0;
   var btn2=document.getElementById('btn2');
   btn2.onclick=function(){
     pg.value=0;
@@ -32,9 +24,10 @@
   var btn=document.getElementById('btn');
   var btn1=document.getElementById('btn1');
   btn.onclick=function(){
+   
     if(pg.value!=100)
     {
-      setInterval(function(){
+       a=window.setInterval(function(){
           pg.value++;
           },100);
     }
@@ -42,6 +35,7 @@
 
 btn1.onclick=function(){
     clearInterval(a);
+    a=0;
 }
 </script>
 </html>
