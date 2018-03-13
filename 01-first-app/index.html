@@ -11,10 +11,12 @@
   padding:0 0 ;
 }
 .rectangle{
-   margin:50px auto   0 600px;
+   margin:50px auto   0 auto;
+   width:300px;
+   height:700px;
 }
 #perimeter{
-  background-color:gray;
+  //background-color:gray;
   height:25px;
   width:200px;
   margin-top:10px;
@@ -22,7 +24,7 @@
 }
 #area{
 
-  background-color:gray;
+  //background-color:gray;
   height:25px;
   width:200px;
   margin-top:10px;
@@ -49,6 +51,11 @@
   margin:0 0;
   padding: 0 0;
 }
+#heigthtext{
+  display:none;
+  margin:0 0;
+  padding:0 0;
+}
 span{
   color:red;
 }
@@ -62,15 +69,16 @@ span{
   <div></div>
   <label for="">高度:</label>
   <input id="height" type="textbox" value=""><span>&nbsp;&nbsp;*</span>
-  <br/>
+  <span id="heigthtext"></span>
+  <div></div>
   <label for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
   <input type="button" id="calc" value="计算" >
   <br/>
   <label for="">周长:</label>
-  <input id="perimeter" type="textbox" value="">
+  <input id="perimeter" type="textbox" value="" disabled >
   <br/>
   <label for="">面积:</label>
-  <input id="area" type="textbox" value="">
+  <input id="area" type="textbox" value="" disabled>
 </div>
 </body>
 <script>
@@ -81,8 +89,6 @@ var heigth=document.getElementById("height");
 var area=document.getElementById('area');
 var perimeter=document.getElementById("perimeter");
 var widthtext=document.getElementById("widthtext");
-area.readOnly=true;
-perimeter.readOnly=true;
 width.focus();
 width.onfocus=function(){
   heigth.disabled="disabled";
@@ -92,7 +98,8 @@ btn.onclick=function(){
  //console.log(heigth.value);
  var a=width.value;
  var b=heigth.value;
-  area.value=a*b;
+
+ area.value=a*b;
   perimeter.value=a*2+b*2;
   var a=area.value.toString();
   if(a.length>5)
@@ -109,20 +116,39 @@ width.onblur=function(){
   if(a==0){
  
     widthtext.style.display="block";
-    widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度不能为空!";
-   // heigth.style.margin-top="-20px";
+    widthtext.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度不能为空' 
+
   }
- else if(typeof a ==string)
- {
-   widthtext.style.display="block";
-   widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须为数字"
- }
-  
-  else if(a<0){
-   widthtext.style.display='block';
-   widthtext.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须为正'
+  else if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(a))
+  {
+    widthtext.style.display='block';
+    widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须为数值";
+  }
+  else if(a<0)
+  {
+    widthtext.style.display="block";
+    widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须大于零"
   }
 }
+
+heigth.onblur=function(){
+ var b=heigth.value;
+ if(b==0)
+ {
+   document.getElementById('heigthtext').style.display="block";
+   document.getElementById('heigthtext').innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高度不能为空"
+ }
+ else if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(b)){
+   document.getElementById('heigthtext').style.display="block";
+   document.getElementById('heigthtext').innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高度必须是数值"
+ }
+ else if(b<0)
+ {
+   document.getElementById('heigthtext').style.display='block';
+   document.getElementById('heigthtext').innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高度必须大于零"
+ }
+}
+
 /*window.onclick=function(){
   widthtext.style.display=none;
 }*/
