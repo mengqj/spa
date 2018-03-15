@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <title>表单验证</title>
+    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link href="css/form.css" rel="stylesheet">
+</head>
+<body>
+<div class="box">
+  <label>宽度:&nbsp;</label>
+  <input type="text" value="" id="width" autofocus name="宽度"><span class="span"> &nbsp;*</span>
+  <div></div>
+
+  <span id="widthtext"></span>
+  
+  <label>高度:&nbsp;</label>
+  <input type="text" value="" id="height" name="高度"> <span class="span"> &nbsp;*</span>
+  <span id="heighttext"></span>
+  
+  <input type="button" id="btn" value="计算">
+  <br/>
+  <label>周长:&nbsp;</label>
+  <input id="perimeter" type="text" disabled >
+  <br/>
+  <label>面积:&nbsp;</label>
+  <input id="area" type="text" disabled>
+</div>
+</body>
+<script src="js/form.js"></script>
+</html>

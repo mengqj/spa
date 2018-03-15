@@ -1,0 +1,27 @@
+.box{
+  width:310px;
+  height:700px;
+  margin:80px auto 0 auto;
+}
+input{
+  width:200px;
+  height:25px;
+  margin-top:5px;
+
+}
+#btn{
+  width:50px;
+  margin-left:47px;
+}
+.span{
+  color:red;
+}
+
+#widthtext,
+#heighttext{
+  color:red;
+  font-size:15px;
+  margin-left:47px;
+  display:none;
+
+}

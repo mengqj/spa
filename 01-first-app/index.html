@@ -47,14 +47,17 @@
   height:25px;
 }
 #widthtext{
+  
   display:none; 
   margin:0 0;
   padding: 0 0;
+  margin-left:47px;
 }
 #heigthtext{
   display:none;
   margin:0 0;
   padding:0 0;
+  margin-left:47px;
 }
 span{
   color:red;
@@ -111,47 +114,61 @@ btn.onclick=function(){
 width.onblur=function(){
   
  
+
   heigth.disabled="";
   var a=width.value;
-  if(a==0){
+  if(a===''){
  
+
     widthtext.style.display="block";
-    widthtext.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度不能为空' 
+    widthtext.innerHTML="宽度不能为空";
+    return false;
 
   }
   else if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(a))
   {
     widthtext.style.display='block';
-    widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须为数值";
+    widthtext.innerHTML="宽度必须为数值";
+    return false;
   }
   else if(a<0)
   {
+
     widthtext.style.display="block";
-    widthtext.innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽度必须大于零"
+    widthtext.innerHTML="宽度必须大于零"
+    return false;
   }
+    widthtext.innerHTML="";
+    return true;
 }
 
 heigth.onblur=function(){
  var b=heigth.value;
- if(b==0)
+ if(b==='')
  {
+   
    document.getElementById('heigthtext').style.display="block";
-   document.getElementById('heigthtext').innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高度不能为空"
+   document.getElementById('heigthtext').innerHTML="高度不能为空";
+   return false;
  }
  else if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(b)){
    document.getElementById('heigthtext').style.display="block";
-   document.getElementById('heigthtext').innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高度必须是数值"
+   document.getElementById('heigthtext').innerHTML="高度必须是数值";
+   return false;
  }
  else if(b<0)
  {
    document.getElementById('heigthtext').style.display='block';
-   document.getElementById('heigthtext').innerHTML="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;高度必须大于零"
+   document.getElementById('heigthtext').innerHTML="高度必须大于零";
+   return false;
+   
  }
+  document.getElementById('heigthtext').innerHTML="";
+  return true;
+  
 }
 
-/*window.onclick=function(){
-  widthtext.style.display=none;
-}*/
+
 
 </script>
 
