@@ -37,9 +37,9 @@ $(function(){
   {
     var d=m*n;
    var d=d+'';
-    if(d.length)
-    {
-      d.slice(0,8);
+   if(d.length>5)
+   {
+     d.slice(0,8);
     }
     return d;
     
@@ -67,7 +67,7 @@ else if(data.val()<0)
   return false;
 
 }
-else if(!/^-?(0[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(data.val())){
+else if(!/^-?(0|[1-9]\d*)(\.\d*)?([eE][+-]?\d+)?$/.test(data.val())){
   msg.css('display','block');
   msg.html(error+'必须为数值');
   data.select();
