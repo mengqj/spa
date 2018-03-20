@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>地图</title>
+  <style>
+html{
+  height:100%;
+
+}
+body{
+  height:100%;
+  margin；0px;
+  padding:0px;
+}
+#container{
+  height:100%;
+}
+  </style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=no7N6M9YWLTVCGYwrmsCs7OZr3TmuzxF"></script>
+</head>
+<body>
+
+
+<div id="container"></div> 
+</body>
+<script>
+var map=new BMap.Map('container');
+var point=new BMap.Point(114.529963,38.003679);
+map.centerAndZoom('河北师大软件学院',30);
+map.enableScrollWheelZoom(true);
+var marker= new BMap.Marker(point);
+map.addOverlay(marker);
+/*function addMarker(point,index)
+{
+  var myIcon=new BMap.Icon('markers.png',new BMap.Size(23,25),{
+      anchor:new BMap.Size(10,25),
+      imageOffset:new BMap.Size(0,0-index*25)
+      });}*/
+map.setMapType(BMAP_HYBRID_MAP);
+marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+var opts={
+  width:250,
+  height:100,
+  title:'<h1>H5方向课</h1>'
+}
+var infowindow=new BMap.InfoWindow("A505教室",opts);
+marker.openInfoWindow(infowindow);
+map.addEventListener('click',function(e){
+    marker.openInfoWindow(infowindow);
+    })
+/*map.addEventListener('mouseup',function(e){
+    marker.closeInfoWindow(infowindow);
+    })*/
+</script>
+</html>

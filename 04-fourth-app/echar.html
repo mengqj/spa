@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>函数曲线</title>
+</head>
+<style>
+html{
+  width:100%;
+}
+body{
+  width:100%;
+  margin:0 0;
+  padding:0 0;
+  height:100%;
+}
+#container{
+  width:80%;
+  margin:50px auto;
+}
+</style>
+<body>
+<div id="container"></div>
+</body>
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/echarts/4.0.2/echarts.min.js"></script>
+<script>
+var mychart=echarts.init($('#container').get(0));
+mychart.setOption({
+title:{text:'二熵函数曲线'},
+tooltip:{},
+toolbox:{
+feature:{
+dataView:{},
+saveAsImage:{
+   pixeRatio:2
+},
+restore:{}
+}
+},
+xAxis:{
+ data:arrX,
+},
+yAxis:{},
+series:[{
+ type:'line',
+ smooth:true,
+ data:arrY
+}]
+    });
+
+var arrX=[];
+var arrY=[];
+function calculate(x,n){
+  return Math.round(x*Math.pow(10,n))/Math.pow(10,n);
+
+}
+function f(p){
+  return -1*(log(p)+log(1-p));
+}
+function log(e){
+  if(e===0)
+  {
+    return 0;
+  }
+  else{
+    return e*Math.log2(e);
+  }
+}
+for(var i=0;i<=1;i+=0.01){
+  arrX.push(calculate(i,1));
+  arrY.push(calculate(f(i),2));
+}
+</script>
+</html>

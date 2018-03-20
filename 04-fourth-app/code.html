@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+.container{
+  width:30%;
+  margin: 0 auto;
+  height:100%;
+}
+button{
+  width:100px;
+  height:50px;
+}
+#content{
+  width:100%;
+}
+</style>
+<body>
+<div class="container">
+  <textarea cols="50" rows="10">Hello World!</textarea>
+  <br/>
+<button id="btn">添加代码</button>
+<div id="content"></div>
+</div>
+
+</body>
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script src="//apps.bdimg.com/libs/behave.js/1.5.0/behave.js"></script>
+<script>
+var editer=new Behave({
+ textarea:null,
+ relaceTab:true,
+ softTabs:true,
+ tabSize:4,
+ autoOpen:true,
+ overWrite:true,
+ autoStrip:true,
+ autoIndent:true,
+ fence:false
+});
+$('#btn').click(function(){
+    if($('textarea').val()!=='')
+    {
+    $('#content').innerHTML+='<div><pre><code >'+$('textarea').val()+'<code><pre><div>'
+    hljs.highlightBlock($('container').find('pre').get(0));
+    }
+    })
+</script>
+</html>
